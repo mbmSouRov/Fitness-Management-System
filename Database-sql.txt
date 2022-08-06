@@ -1,0 +1,53 @@
+CREATE TABLE CUSTOMER
+(
+MemberId int PRIMARY KEY,
+CustomerNID int NOT NULL UNIQUE ,
+CustomerName varchar(50) NOT NULL,
+CustomerAge int NOT NULL CHECK (CustomerAge >= 18),
+CustomerGender varchar(50) NOT NULL,
+CustomerEmail varchar(50) NOT NULL,
+CustomerPhone varchar(11) NOT NULL UNIQUE ,
+CustomerGymTime varchar(10) NULL
+TrainerName varchar(50) NOT NULL
+)
+
+
+
+
+CREATE TABLE CUSTOMER_ATTENDENCE
+(
+Customer_AttendenceId int PRIMARY KEY,
+MemberId int NOT NULL FOREIGN KEY REFERENCES CUSTOMER (MemberId),
+CustomerName varchar(50) NOT NULL,
+Shift_Time varchar(50) NOT NULL,
+Attendence varchar(50) NOT NULL,
+Date varchar(50) NOT NULL
+)
+
+
+
+CREATE TABLE TRAINER_ATTENDENCE
+(
+Trainer_AttendenceId int PRIMARY KEY,
+TrainerId  int NOT NULL FOREIGN KEY REFERENCES TRAINER (TrainerId),
+TrainerName varchar(50) NOT NULL,
+Shift_Time varchar(50) NOT NULL,
+Attendence varchar(50) NOT NULL
+)
+
+
+CREATE TABLE TRAINER
+(
+TrainerId int PRIMARY KEY int PRIMARY KEY,
+TrainerName varchar(50) NOT NULL,
+TrainerAge int NOT NULL,
+TrainerPhone varchar(11) NOT NULL,
+TrainerNID int NOT NULL UNIQUE ,
+TrainerEmail varchar(50) NOT NULL,
+TrainerPassword varchar(50) NOT NULL,
+TrainerGender varchar(50) NOT NULL
+
+)
+
+drop table TRAINER;
+
